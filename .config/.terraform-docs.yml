@@ -1,0 +1,82 @@
+formatter: "" # this is required
+
+version: ""
+
+header-from: main.tf
+footer-from: ""
+
+recursive:
+  enabled: false
+  path: modules
+
+sections:
+  hide: []
+  show: []
+
+content: |-
+  # Azure VPN gateway module
+
+  This module simplifies the creation of Azure VPN gateway and (optional) one or more local network gateways (connections). It is designed to be flexible, modular, and easy to use, ensuring a seamless Azure VPN gateway deployment.
+
+  {{ .Requirements }}
+
+  {{ .Providers }}
+
+  {{ .Resources }}
+
+  {{ .Inputs }}
+
+  {{ .Outputs }}
+
+  ## Example(s)
+
+  ### Azure VPN gateway with default options and 1 local network gateway (connection)
+
+  ```hcl
+  {{ include ".examples/example_vpn_gateway.tf"}}
+  ```
+
+   ### Azure VPN gateway with default options, 1 local network gateway (connection) and user (point-to-site) VPN
+
+  ```hcl
+  {{ include ".examples/example_vpn_gateway_with_user_vpn.tf"}}
+  ```
+
+  # Known issues and limitations
+
+  - The shared keys for the VPN connections must be obtained from within the terraform state file.
+
+  # Author
+
+  Stefan Vonk (vonk.stefan@live.nl) Technical Specialist
+
+output:
+  file: ""
+  mode: inject
+  template: |-
+    <!-- BEGIN_TF_DOCS -->
+    {{ .Content }}
+    <!-- END_TF_DOCS -->
+
+output-values:
+  enabled: false
+  from: ""
+
+sort:
+  enabled: true
+  by: name
+
+settings:
+  anchor: true
+  color: true
+  default: true
+  description: false
+  escape: true
+  hide-empty: false
+  html: true
+  indent: 2
+  lockfile: true
+  read-comments: true
+  required: true
+  sensitive: true
+  type: true
